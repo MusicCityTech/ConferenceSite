@@ -3,20 +3,18 @@
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
-import { MainController } from './main/main.controller';
-import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
-import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
-import { NavbarDirective } from '../app/components/navbar/navbar.directive';
-import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
+import { SessionsController } from './sessions/sessions.controller'
+import { SessionService } from './sessions/sessions.service'
 
-angular.module('conferenceSite', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'ui.bootstrap', 'toastr'])
+angular.module('conferenceSite',
+  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
+    'ngResource', 'ui.router', 'ui.bootstrap', 'toastr', 'ODataResources'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
+  .constant('baseUrl', 'http://localhost:50391/')
   .config(config)
   .config(routerConfig)
   .run(runBlock)
-  .service('githubContributor', GithubContributorService)
-  .service('webDevTec', WebDevTecService)
-  .controller('MainController', MainController)
-  .directive('acmeNavbar', NavbarDirective)
-  .directive('acmeMalarkey', MalarkeyDirective);
+  .service('SessionService', SessionService)
+  .controller('SessionsController', SessionsController);
+

@@ -1,11 +1,12 @@
 export function routerConfig ($stateProvider, $urlRouterProvider) {
+  //noinspection BadExpressionStatementJS
   'ngInject';
   $stateProvider
-    .state('home', {
+    .state('sessions', {
       url: '/',
-      templateUrl: 'app/main/main.html',
-      controller: 'MainController',
-      controllerAs: 'main'
+      templateUrl: 'app/sessions/sessions.html',
+      controller: 'SessionsController',
+      controllerAs: 'vm'
     });
 
   $urlRouterProvider.otherwise('/');
