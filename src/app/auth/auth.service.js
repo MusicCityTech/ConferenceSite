@@ -17,11 +17,16 @@ export class AuthService {
 
   saveRegistration(registration) {
     this.logOut();
+    let deferred = this.$q.defer();
 
-    return this.$http(this.baseUrl + '/api/account/register', registration)
-                .then(response => {
-                  return response;
+    this.$http.post(this.baseUrl + '/api/account/register', registration)
+                .success(response => {
+                  deferred.resolve(response);
+                }).error(err => {
+                  deferred.reject(err);
                 });
+
+    return deferred.promise;
   }
 
   login(loginData) {
@@ -35,7 +40,7 @@ export class AuthService {
         this.authentication.userName = loginData.userName;
 
         deferred.resolve(response);
-      }).error((err) => {
+      }).error(err => {
         this.logOut();
         deferred.reject(err);
       });

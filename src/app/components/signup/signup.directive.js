@@ -7,7 +7,9 @@ export function SignupDirective() {
   return {
     restrict: 'E',
     templateUrl: 'app/components/signup/signup.html',
-    scope: {},
+    scope: {
+      redirectPath: "@"
+    },
     controller: SignupController,
     controllerAs: 'vm',
     bindToController: true
@@ -32,17 +34,22 @@ class SignupController {
   }
 
   signUp() {
-    this.authService.saveRegistration(self.registration).then(() => {
+    if(this.registration.password !== this.registration.confirmPassword) {
+      this.message = "The passwords enter do not match.";
+      return;
+    }
+
+    this.authService.saveRegistration(this.registration).then(() => {
       this.savedSuccessfully = true;
       this.message = "User has been registered successfully, you will be redirected to login page in 2 seconds.";
       this.startTimer();
     }, response => {
       let errors = [];
-      for(let key in response.data.modelState) {
-        if(response.data.modelState.hasOwnProperty(key)) {
-          for(let i = 0; i < response.data.modelState[key].length; i++) {
-            if(response.data.modelState[key].hasOwnProperty(i)) {
-              errors.push(response.data.modelState[key][i]);
+      for(let key in response.ModelState) {
+        if(response.ModelState.hasOwnProperty(key)) {
+          for(let i = 0; i < response.ModelState[key].length; i++) {
+            if(response.ModelState[key].hasOwnProperty(i)) {
+              errors.push(response.ModelState[key][i]);
             }
           }
         }
@@ -54,9 +61,9 @@ class SignupController {
   }
 
   startTimer() {
-    let timer = self.$timeout(() => {
-      this.timeout.cancel(timer);
-      this.$location.path('/login');
+    let timer = this.$timeout(() => {
+      this.$timeout.cancel(timer);
+      this.$location.path(this.redirectPath || '/');
     }, 2000);
   }
 }
