@@ -2,7 +2,7 @@ export function LoginDirective() {
   //noinspection BadExpressionStatementJS
   'ngInject';
 
-  let directive = {
+  return {
     restrict: 'E',
     templateUrl: 'app/components/login/login.html',
     scope: {
@@ -12,8 +12,6 @@ export function LoginDirective() {
     controllerAs: 'vm',
     bindToController: true
   };
-
-  return directive;
 }
 
 class LoginController {
@@ -35,7 +33,7 @@ class LoginController {
   }
 
   login() {
-    this.authService.login(this.loginData).then(response => {
+    this.authService.login(this.loginData).then(() => {
       this.$location.path(this.redirectPath || '/')
     }, err => {
       this.$log.log(err);
