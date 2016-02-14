@@ -1,5 +1,9 @@
-export function config ($logProvider, toastrConfig) {
+export function config ($httpProvider, $logProvider, toastrConfig) {
+  //noinspection BadExpressionStatementJS
   'ngInject';
+
+  $httpProvider.interceptors.push('authInterceptorService');
+
   // Enable log
   $logProvider.debugEnabled(true);
 

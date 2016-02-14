@@ -61,4 +61,8 @@ export class AuthService {
       this.authentication.userName = authData.userName;
     }
   }
+
+  getCurrentUser() {
+    return this.localStorageService.get('authorizationData');
+  }
 }
