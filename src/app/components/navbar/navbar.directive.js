@@ -1,25 +1,23 @@
+"use strict";
+
 export function NavbarDirective() {
+  //noinspection BadExpressionStatementJS
   'ngInject';
 
-  let directive = {
+  return {
     restrict: 'E',
     templateUrl: 'app/components/navbar/navbar.html',
     scope: {
-        creationDate: '='
+      creationDate: '='
     },
     controller: NavbarController,
     controllerAs: 'vm',
     bindToController: true
   };
-
-  return directive;
 }
 
 class NavbarController {
-  constructor (moment) {
-    'ngInject';
+  constructor () {
 
-    // "this.creation" is available by directive option "bindToController: true"
-    this.relativeDate = moment(this.creationDate).fromNow();
   }
 }

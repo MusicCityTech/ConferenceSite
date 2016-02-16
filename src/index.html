@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="conferenceSite" ng-strict-di>
+<html>
   <head>
     <meta charset="utf-8">
     <title>conferenceSite</title>
@@ -19,11 +19,11 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body>
+  <body ng-app="conferenceSite" ng-strict-di>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+    <navbar></navbar>
     <div ui-view></div>
 
     <!-- build:js(src) scripts/vendor.js -->

@@ -11,6 +11,7 @@ import { AuthService } from './auth/auth.service'
 import { AuthInterceptor } from './auth/auth.interceprtor'
 import { LoginDirective } from './components/login/login.directive'
 import { SignupDirective } from './components/signup/signup.directive'
+import { NavbarDirective } from './components/navbar/navbar.directive'
 
 angular.module('conferenceSite',
   ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
@@ -23,6 +24,7 @@ angular.module('conferenceSite',
   .run(runBlock)
   .directive('login', LoginDirective)
   .directive('signup', SignupDirective)
+  .directive('navbar', NavbarDirective)
   .service('authInterceptorService', AuthInterceptor)
   .service('SessionService', SessionService)
   .service('authService', AuthService)
