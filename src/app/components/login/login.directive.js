@@ -6,7 +6,8 @@ export function LoginDirective() {
     restrict: 'E',
     templateUrl: 'app/components/login/login.html',
     scope: {
-      redirectPath: '@'
+      onSuccess: '&',
+      onError: '&'
     },
     controller: LoginController,
     controllerAs: 'vm',
@@ -34,10 +35,9 @@ class LoginController {
 
   login() {
     this.authService.login(this.loginData).then(() => {
-      this.$location.path(this.redirectPath || '/')
+      this.onSuccess();
     }, err => {
-      this.$log.log(err);
-      this.message = err.error_description;
+      this.onError({errorMessage: err.error_description});
     })
   }
 }

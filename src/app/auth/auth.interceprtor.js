@@ -17,9 +17,9 @@ export class AuthInterceptor extends HttpInterceptor {
   request(config) {
     config.headers = config.headers || {};
     var authService = this.$injector.get('authService');
-    var user = authService.getCurrentUser();
-    if(user) {
-      config.headers.Authorization = 'Bearer ' + user.token;
+    var token = authService.getCurrentToken();
+    if(token) {
+      config.headers.Authorization = token.token_type + ' ' + token.token;
     }
 
     return config;

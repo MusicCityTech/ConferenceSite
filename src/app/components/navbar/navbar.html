@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href=http://www.musiccitycode.com/">
@@ -14,7 +14,8 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right acme-navbar-text">
-        <li><a ui-sref="login">Login</a></li>
+        <li><a ui-sref="login" class="btn btn-link" ng-hide="vm.isLoggedIn()">Login</a></li>
+        <li><a ng-click="vm.logout()" class="btn btn-link" ng-show="vm.isLoggedIn()">Logout</a></li>
       </ul>
     </div>
   </div>

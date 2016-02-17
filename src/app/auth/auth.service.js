@@ -1,14 +1,16 @@
 'use strict';
 
 export class AuthService {
-  constructor ($http, $q, localStorageService, baseUrl) {
+  constructor ($http, $q, $log, localStorageService, baseUrl, moment) {
     //noinspection BadExpressionStatementJS
     'ngInject';
 
     this.$http = $http;
     this.$q = $q;
+    this.$log = $log;
     this.localStorageService = localStorageService;
     this.baseUrl = baseUrl;
+    this.moment = moment;
     this.authentication = {
       isAuth: false,
       userName: ""
@@ -20,10 +22,30 @@ export class AuthService {
     let deferred = this.$q.defer();
 
     this.$http.post(this.baseUrl + '/api/account/register', registration)
-                .success(response => {
-                  deferred.resolve(response);
-                }).error(err => {
-                  deferred.reject(err);
+                .then(response => {
+                  deferred.resolve(response.data);
+                }, (err) => {
+                  let message = err.data.Message || '';
+                  let errors = [];
+
+                  if(err.status < 0) {
+                    message = "Error connecting to the api server at url " + this.baseUrl;
+                  } else {
+                    if(angular.isDefined(err.data.ModelState)) {
+                      for (let key in err.data.ModelState) {
+                        if (err.data.ModelState.hasOwnProperty(key)) {
+                          for (let i = 0; i < err.data.ModelState[key].length; i++) {
+                            if (err.data.ModelState[key].hasOwnProperty(i)) {
+                              errors.push(err.data.ModelState[key][i]);
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  deferred.reject({message: message, errors: errors});
+
                 });
 
     return deferred.promise;
@@ -34,13 +56,20 @@ export class AuthService {
     let deferred = this.$q.defer();
 
     this.$http.post(this.baseUrl +"token", data)
-      .success(response => {
-        this.localStorageService.set('authorizationData', {token: response.access_token, userName: loginData.userName});
+      .then(response => {
+        this.localStorageService.set('authorizationData', {
+          token: response.data.access_token,
+          token_type: response.data.token_type,
+          issued: response.data[".issued"],
+          expires: response.data[".expires"],
+          expires_in: response.data.expires_in,
+          username: response.data.userName
+       });
         this.authentication.isAuth = true;
         this.authentication.userName = loginData.userName;
 
         deferred.resolve(response);
-      }).error(err => {
+      }, err => {
         this.logOut();
         deferred.reject(err);
       });
@@ -54,15 +83,18 @@ export class AuthService {
     this.authentication.userName = "";
   }
 
-  fillAuthData() {
-    var authData = this.localStorageService.get('authorizationData');
-    if(authData) {
-      this.authentication.isAuth = true;
-      this.authentication.userName = authData.userName;
-    }
-  }
-
-  getCurrentUser() {
+  getCurrentToken() {
     return this.localStorageService.get('authorizationData');
   }
+
+  isLoggedIn() {
+    var token = this.getCurrentToken();
+    if(token === null) return false;
+
+    var now = this.moment();
+    var expiresAt = this.moment(new Date(token.expires));
+
+    return expiresAt.isAfter(now);
+  }
+
 }

@@ -17,7 +17,21 @@ export function NavbarDirective() {
 }
 
 class NavbarController {
-  constructor () {
+  constructor ($state, authService) {
+    //noinspection BadExpressionStatementJS
+    'ngInject';
+
+    this.$state = $state;
+    this.authService = authService;
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  logout() {
+    this.authService.logOut();
+    this.$state.go('login');
 
   }
 }

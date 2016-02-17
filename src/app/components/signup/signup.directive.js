@@ -8,7 +8,8 @@ export function SignupDirective() {
     restrict: 'E',
     templateUrl: 'app/components/signup/signup.html',
     scope: {
-      redirectPath: "@"
+      successCallback: "&",
+      errorCallback: "&"
     },
     controller: SignupController,
     controllerAs: 'vm',
@@ -17,19 +18,19 @@ export function SignupDirective() {
 }
 
 class SignupController {
-  constructor($location, $timeout, authService) {
+  constructor($location, $timeout, $log, authService) {
     //noinspection BadExpressionStatementJS
     'ngInject';
 
     this.$location = $location;
     this.$timeout = $timeout;
+    this.$log = $log;
     this.authService = authService;
     this.registration = {
       email: '',
       password: '',
       confirmPassword: ''
     };
-    this.savedSuccessfully = false;
     this.message = '';
   }
 
@@ -39,31 +40,18 @@ class SignupController {
       return;
     }
 
-    this.authService.saveRegistration(this.registration).then(() => {
-      this.savedSuccessfully = true;
-      this.message = "User has been registered successfully, you will be redirected to login page in 2 seconds.";
-      this.startTimer();
+    this.authService.saveRegistration(this.registration).then( () => {
+      this.$log.log("Registration successful");
+      this.successCallback()
     }, response => {
-      let errors = [];
-      for(let key in response.ModelState) {
-        if(response.ModelState.hasOwnProperty(key)) {
-          for(let i = 0; i < response.ModelState[key].length; i++) {
-            if(response.ModelState[key].hasOwnProperty(i)) {
-              errors.push(response.ModelState[key][i]);
-            }
-          }
-        }
+
+      this.errorCallback({
+        errorMessage: '<strong>' +
+                      response.message +
+                      '</strong><br><br>' +
+                      response.errors.join('<br>')});
 
 
-        this.message = "Failed to register user due to: " + errors.join(' ');
-      }
-    })
-  }
-
-  startTimer() {
-    let timer = this.$timeout(() => {
-      this.$timeout.cancel(timer);
-      this.$location.path(this.redirectPath || '/');
-    }, 2000);
+    });
   }
 }

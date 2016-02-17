@@ -1,14 +1,17 @@
-<table class="table table-bordered">
-  <thead>
+<div class="container">
+  <table class="table table-bordered">
+    <thead>
     <tr>
       <td>Subject</td>
       <td>Author</td>
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
     <tr ng-repeat="session in vm.sessions">
       <th>{{session.Title}}</th>
       <th>{{session.Speaker.FirstName}} {{session.Speaker.LastName}}</th>
     </tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
+
