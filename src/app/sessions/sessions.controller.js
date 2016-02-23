@@ -1,12 +1,11 @@
 export class SessionsController {
-  constructor ($odataresource, $log, baseUrl) {
+  constructor ($odataresource, baseUrl) {
     //noinspection BadExpressionStatementJS
     'ngInject';
       this.sessions = $odataresource(baseUrl + '/odata/Sessions')
         .odata()
         .expand("Speaker")
         .query();
-      $log.log(this.sessions);
 
   }
 }

@@ -19,6 +19,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/auth/register.html',
       controller: 'RegisterController',
       controllerAs: 'vm'
+    })
+    .state('profile', {
+      url: '/profile',
+      templateUrl: 'app/profile/update.html',
+      controller: 'ProfileController',
+      controllerAs: 'vm'
     });
 
   $urlRouterProvider.otherwise('/');

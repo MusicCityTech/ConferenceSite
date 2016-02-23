@@ -3,15 +3,17 @@
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
-import { LoginController } from './auth/LoginController'
-import { RegisterController } from './auth/RegisterController'
-import { SessionsController } from './sessions/sessions.controller'
-import { SessionService } from './sessions/sessions.service'
-import { AuthService } from './auth/auth.service'
-import { AuthInterceptor } from './auth/auth.interceprtor'
-import { LoginDirective } from './components/login/login.directive'
-import { SignupDirective } from './components/signup/signup.directive'
-import { NavbarDirective } from './components/navbar/navbar.directive'
+import { LoginController } from './auth/LoginController';
+import { RegisterController } from './auth/RegisterController';
+import { SessionsController } from './sessions/sessions.controller';
+import { ProfileController } from './profile/profile.controller';
+import { SessionService } from './sessions/sessions.service';
+import { ProfileService } from './profile/profile.service';
+import { AuthService } from './auth/auth.service';
+import { AuthInterceptor } from './auth/auth.interceprtor';
+import { LoginDirective } from './components/login/login.directive';
+import { SignupDirective } from './components/signup/signup.directive';
+import { NavbarDirective } from './components/navbar/navbar.directive';
 
 angular.module('conferenceSite',
   ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
@@ -25,10 +27,12 @@ angular.module('conferenceSite',
   .service('authInterceptorService', AuthInterceptor)
   .service('SessionService', SessionService)
   .service('authService', AuthService)
+  .service('profileService', ProfileService)
   .directive('login', LoginDirective)
   .directive('signup', SignupDirective)
   .directive('navbar', NavbarDirective)
   .controller('SessionsController', SessionsController)
   .controller('LoginController', LoginController)
-  .controller('RegisterController', RegisterController);
+  .controller('RegisterController', RegisterController)
+  .controller('ProfileController', ProfileController);
 

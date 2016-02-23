@@ -67,11 +67,12 @@ export class AuthService {
        });
         this.authentication.isAuth = true;
         this.authentication.userName = loginData.userName;
-
+        this.$log.log('succes', response);
         deferred.resolve(response);
       }, err => {
+        this.$log.log('error', err);
         this.logOut();
-        deferred.reject(err);
+        deferred.reject(err.data);
       });
 
     return deferred.promise;
