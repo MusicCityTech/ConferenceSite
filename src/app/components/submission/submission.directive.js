@@ -34,12 +34,7 @@ class SubmissionController {
         };
     }
 
-    isLoggedIn() {
-        return this.authService.isLoggedIn();
-    }
-
-    logout() {
-        this.authService.logOut();
-        this.$state.go('login');
+    submit() {
+        //Not really sure what to put here...
     }
 }
