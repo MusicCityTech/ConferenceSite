@@ -23,10 +23,13 @@ export class ProfileService {
         .expand('Profile')
         .select(['Profile'])
         .single(response => {
-          //maybe this is error? because it's not success
-          deferred.resolve(response);
+          // honestly not when this gets called, need to check
+          deferred.reject(response);
         }, response => {
-          deferred.resolve(response.Profile);
+          if(response.Profile)
+            deferred.resolve(response.Profile);
+          else
+            deferred.reject("Not found");
         });
 
     return deferred.promise;

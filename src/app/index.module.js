@@ -4,8 +4,8 @@ import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 //import { factoryBuilder } from './common/factory.builder'
-import { LoginController } from './auth/LoginController';
-import { RegisterController } from './auth/RegisterController';
+import { LoginController } from './auth/login.controller';
+import { RegisterController } from './auth/register.controller';
 import { SessionsController } from './sessions/sessions.controller';
 import { ProfileController } from './profile/profile.controller';
 import { SessionService } from './sessions/sessions.service';
