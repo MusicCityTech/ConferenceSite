@@ -33,6 +33,37 @@ export class ProfileService {
   }
 
   saveProfile(profile) {
-    return this.profileResource.update(profile);
+    let deferred = this.$q.defer();
+
+    if(profile.Id !== undefined && profile.Id > 0) {
+      this.$log.log("Updating");
+      let newProfile = new this.profileResource(profile);
+      newProfile.$update(savedProfile => {
+        deferred.resolve(savedProfile);
+      }, err => {
+        deferred.reject(this.formatErrorMessage(err));
+      });
+
+    } else {
+      this.$log.log("creating");
+      let newProfile = new this.profileResource(profile);
+      newProfile.$save(savedProfile => {
+        deferred.resolve(savedProfile);
+      }, err => {
+        deferred.reject(this.formatErrorMessage(err));
+      });
+    }
+
+    return deferred.promise;
+  }
+
+  static formatErrorMessage(err) {
+    let error = err.data.error;
+    let errorMessage = `<strong>${error.message}</strong>`;
+    if(error.innererror) {
+      errorMessage = `${errorMessage}<br><br>${error.innererror.message.replace(/(?:\r\n|\r|\n)/g, '<br>')}`;
+    }
+
+    return errorMessage;
   }
 }
