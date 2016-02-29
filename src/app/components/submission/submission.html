@@ -1,0 +1,37 @@
+<form role="form">
+    <h2>Session Submission Form</h2>
+    <fieldset class="form-group">
+        <label for="title">Session Title*</label>
+        <input type="text" class="form-control" id="title" data-ng-model="vm.formData.title"></input>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="audienceLevel">Audience Level*</label>
+        <select class="form-control" id="audienceLevel" data-ng-model="vm.formData.audienceLevel">
+            <option>Select Option</option>
+            <option>Beginner</option>
+            <option>Novice</option>
+            <option>Intermediate</option>
+            <option>Expert</option>
+        </select>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" class="form-control" id="tags" placeholder="tag1, tag2, etc..." data-ng-model="vm.formData.tags">
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="outline">Brief Outline*</label>
+        <textarea class="form-control" id="outline" rows="3" placeholder="Enter a brief outline of your session here." data-ng-model="vm.formData.outline"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="abstract">Detailed Abstract*</label>
+        <textarea class="form-control" id="abstract" rows="5" placeholder="Enter your session abstract here." data-ng-model="vm.formData.abstract"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="notes">Additional Notes for Selection Committee</label>
+        <textarea class="form-control" id="notes" rows="3" data-ng-model="vm.formData.notes"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <small class="text-muted">Please make sure all fields marked with a '*' are properly filled out before submitting.</small>
+    </fieldset>
+    <button type="submit" class="btn btn-primary" ng-click="vm.submit()">Submit</button>
+</form>
