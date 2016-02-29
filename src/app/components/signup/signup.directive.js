@@ -41,7 +41,6 @@ class SignupController {
     }
 
     this.authService.saveRegistration(this.registration).then( () => {
-      this.$log.log("Registration successful");
       this.successCallback()
     }, response => {
 

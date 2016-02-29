@@ -22,7 +22,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
     })
     .state('profile', {
       url: '/profile',
-      templateUrl: 'app/profile/update.html',
+      templateUrl: 'app/profile/edit.html',
       controller: 'ProfileController',
       controllerAs: 'vm'
     });

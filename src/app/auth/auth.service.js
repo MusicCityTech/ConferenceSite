@@ -63,14 +63,14 @@ export class AuthService {
           issued: response.data[".issued"],
           expires: response.data[".expires"],
           expires_in: response.data.expires_in,
-          username: response.data.userName
+          username: response.data.userName,
+          user_id: response.data.id
        });
         this.authentication.isAuth = true;
         this.authentication.userName = loginData.userName;
-        this.$log.log('succes', response);
+
         deferred.resolve(response);
       }, err => {
-        this.$log.log('error', err);
         this.logOut();
         deferred.reject(err.data);
       });
@@ -86,6 +86,22 @@ export class AuthService {
 
   getCurrentToken() {
     return this.localStorageService.get('authorizationData');
+  }
+
+  getUserInfo() {
+    let deferred = this.$q.defer();
+    let userInfo = this.localStorage.get('userInfo');
+    if(userInfo === undefined) {
+      this.$http.get(this.baseUrl + 'api/Account/UserInfo')
+        .then(response => {
+          this.localStorage.set('userInfo', response);
+          deferred.resolve(response);
+        })
+    } else {
+      return deferred.resolve(userInfo);
+    }
+
+    return deferred.promise;
   }
 
   isLoggedIn() {

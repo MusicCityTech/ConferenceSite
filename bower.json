@@ -34,6 +34,13 @@
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
       ]
+    },
+    "breeze-client": {
+      "main": [
+        "breeze.debug.js",
+        "build/adapters/breeze.bridge.angular.js",
+        "build/adapters/breeze.dataService.odata.js"
+      ]
     }
   },
   "resolutions": {

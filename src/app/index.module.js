@@ -3,6 +3,7 @@
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
+//import { factoryBuilder } from './common/factory.builder'
 import { LoginController } from './auth/LoginController';
 import { RegisterController } from './auth/RegisterController';
 import { SessionsController } from './sessions/sessions.controller';
@@ -14,8 +15,9 @@ import { AuthInterceptor } from './auth/auth.interceprtor';
 import { LoginDirective } from './components/login/login.directive';
 import { SignupDirective } from './components/signup/signup.directive';
 import { NavbarDirective } from './components/navbar/navbar.directive';
+import { ProfileEditorDirective } from './components/profile-editor/profile-editor.directive'
 
-angular.module('conferenceSite',
+angular.module('conferenceSite', // eslint-disable-line
   ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria',
     'ngResource', 'ui.router', 'ui.bootstrap', 'toastr', 'ODataResources', 'LocalStorageModule'])
   .constant('malarkey', malarkey)
@@ -31,6 +33,7 @@ angular.module('conferenceSite',
   .directive('login', LoginDirective)
   .directive('signup', SignupDirective)
   .directive('navbar', NavbarDirective)
+  .directive('profileEditor', ProfileEditorDirective)
   .controller('SessionsController', SessionsController)
   .controller('LoginController', LoginController)
   .controller('RegisterController', RegisterController)

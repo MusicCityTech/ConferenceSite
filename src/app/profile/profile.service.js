@@ -1,32 +1,38 @@
 'use strict';
 
 export class ProfileService {
-  constructor($http, $q, $log, $odataresource, baseUrl) {
+  constructor($http, $q, $log, authService, $odataresource, baseUrl) {
     //noinspection BadExpressionStatementJS
     'ngInject';
 
     this.$http = $http;
     this.$q = $q;
     this.$log = $log;
+    this.authService = authService;
     this.$odataresource = $odataresource;
-    this.baseUrl = baseUrl;
+    this.userResource = $odataresource(baseUrl + '/odata/Users');
+    this.profileResource = $odataresource(baseUrl + 'odata/Profiles', 'Id');
   }
 
-  loadProfile(email) {
+  getProfile() {
     let deferred = this.$q.defer();
-
-     this.$odataresource(this.baseUrl + '/odata/Profiles')
+    let authData = this.authService.getCurrentToken();
+    this.userResource
         .odata()
-        .get("'" + email + "'",
-          response => {
-            this.$log.log("success", response);
-            deferred.resolve(response)
-          },
-          error => {
-            this.$log.log("error", error);
-            deferred.reject(error);
-          });
+        .filter("UserName", authData.username)
+        .expand('Profile')
+        .select(['Profile'])
+        .single(response => {
+          //maybe this is error? because it's not success
+          deferred.resolve(response);
+        }, response => {
+          deferred.resolve(response.Profile);
+        });
 
     return deferred.promise;
+  }
+
+  saveProfile(profile) {
+    return this.profileResource.update(profile);
   }
 }

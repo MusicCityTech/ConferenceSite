@@ -1,0 +1,38 @@
+<form class="form-login" role="form">
+  <h2>Edit Profile</h2>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input name="firstName" type="text" class="form-control" placeholder="First Name" data-ng-model="vm.profile.FirstName" autofocus>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input name="lastName" type="text" class="form-control" placeholder="Last Name" data-ng-model="vm.profile.LastName">
+  </div>
+  <div class="form-group">
+    <label for="email">Public Email</label>
+    <input name="email" type="email" class="form-control" placeholder="Email" data-ng-model="vm.profile.Email">
+  </div>
+  <div class="form-group">
+    <label for="website">Website</label>
+    <input name="website" type="url" class="form-control" placeholder="Website" data-ng-model="vm.profile.Website">
+  </div>
+  <div class="form-group">
+    <label for="twitterHandle">Twitter</label>
+    <input name="twitterHandle" type="text" class="form-control" placeholder="Twitter" data-ng-model="vm.profile.TwitterHandle">
+  </div>
+  <div class="form-group">
+    <label for="githubUsername">GitHub</label>
+    <input name="githubUsername" type="text" class="form-control" placeholder="GitHub" data-ng-model="vm.profile.GithubUsername">
+  </div>
+  <div class="form-group">
+    <label for="linkedInUrl">LinkedIn</label>
+    <input name="linkedInUrl" type="url" class="form-control" placeholder="LinkedIn" data-ng-model="vm.profile.LinkedInProfile">
+  </div>
+  <div class="form-group">
+    <label for="bio">Short Bio</label>
+    <textarea id="bio" class="form-control" data-ng-model="vm.profile.Bio"></textarea>
+  </div>
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit" data-ng-click="vm.saveProfile()">Save</button>
+  </div>
+</form>

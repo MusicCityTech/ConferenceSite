@@ -37,7 +37,6 @@ class LoginController {
     this.authService.login(this.loginData).then(() => {
       this.onSuccess();
     }, err => {
-      this.$log.log("from directive", err);
       this.onError({errorMessage: err.error_description});
     })
   }

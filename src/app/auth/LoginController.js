@@ -11,9 +11,8 @@ export class LoginController {
 
   onSuccess() {
     this.toastr.success('Login Successful!');
-    let authData = this.authService.getCurrentToken();
     this.profileService
-      .loadProfile(authData.username)
+      .getProfile()
       .then(() => this.$state.go('home'), () => this.$state.go('profile'));
   }
 
