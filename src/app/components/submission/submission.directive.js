@@ -1,40 +1,31 @@
 "use strict";
 
 export function SubmissionDirective() {
-    //noinspection BadExpressionStatementJS
-    'ngInject';
+  //noinspection BadExpressionStatementJS
+  'ngInject';
 
-    return {
-        restrict: 'E',
-        templateUrl: 'app/components/submission/submission.html',
-        scope: {
-            creationDate: '='
-        },
-        controller: SubmissionController,
-        controllerAs: 'vm',
-        bindToController: true
-    };
+  return {
+    restrict: 'E',
+    templateUrl: 'app/components/submission/submission.html',
+    scope: {
+      proposedTalk: '=',
+      onSave: '&'
+    },
+    controller: SubmissionController,
+    controllerAs: 'vm',
+    bindToController: true
+  };
 }
 
 class SubmissionController {
-    constructor ($state, authService) {
-        //noinspection BadExpressionStatementJS
-        'ngInject';
+  constructor($log) {
+    //noinspection BadExpressionStatementJS
+    'ngInject';
 
-        this.$state = $state;
-        this.authService = authService;
+    this.$log = $log;
+  }
 
-        this.formData = {
-            title = "",
-            audienceLevel = "",
-            tags = "",
-            outline = "",
-            abstract = "",
-            notes = ""
-        };
-    }
-
-    submit() {
-        //Not really sure what to put here...
-    }
+  save() {
+    this.onSave();
+  }
 }

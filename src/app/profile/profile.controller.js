@@ -10,8 +10,10 @@ export class ProfileController {
 
     this.profile = this.profileService.getProfile().then(prof => {
       this.profile = prof;
-    }, () => {
-
+      this.$log.log(prof);
+    }, err => {
+      this.$log.log(err);
+      this.toastr.error(err);
     });
   }
 
@@ -22,7 +24,7 @@ export class ProfileController {
         this.toastr.success("Profile saved successfully!");
         this.$state.go("home");
       }, err => {
-        this.$log.log(err);
+        this.$log.log("error", err);
         this.toastr.error(err);
       });
   }

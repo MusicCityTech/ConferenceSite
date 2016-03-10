@@ -2,35 +2,39 @@
   <h2>Edit Profile</h2>
   <div class="form-group">
     <label for="firstName">First Name</label>
-    <input name="firstName" type="text" class="form-control" placeholder="First Name" data-ng-model="vm.profile.FirstName" autofocus>
+    <input name="firstName" type="text" class="form-control" placeholder="First Name"
+           data-ng-model="vm.profile.firstName" autofocus>
   </div>
   <div class="form-group">
     <label for="lastName">Last Name</label>
-    <input name="lastName" type="text" class="form-control" placeholder="Last Name" data-ng-model="vm.profile.LastName">
+    <input name="lastName" type="text" class="form-control" placeholder="Last Name" data-ng-model="vm.profile.lastName">
   </div>
   <div class="form-group">
     <label for="email">Public Email</label>
-    <input name="email" type="email" class="form-control" placeholder="Email" data-ng-model="vm.profile.Email">
+    <input name="email" type="email" class="form-control" placeholder="Email" data-ng-model="vm.profile.email">
   </div>
   <div class="form-group">
     <label for="website">Website</label>
-    <input name="website" type="url" class="form-control" placeholder="Website" data-ng-model="vm.profile.Website">
+    <input name="website" type="url" class="form-control" placeholder="Website" data-ng-model="vm.profile.website">
   </div>
   <div class="form-group">
     <label for="twitterHandle">Twitter</label>
-    <input name="twitterHandle" type="text" class="form-control" placeholder="Twitter" data-ng-model="vm.profile.TwitterHandle">
+    <input name="twitterHandle" type="text" class="form-control" placeholder="Twitter"
+           data-ng-model="vm.profile.twitterHandle">
   </div>
   <div class="form-group">
     <label for="githubUsername">GitHub</label>
-    <input name="githubUsername" type="text" class="form-control" placeholder="GitHub" data-ng-model="vm.profile.GithubUsername">
+    <input name="githubUsername" type="text" class="form-control" placeholder="GitHub"
+           data-ng-model="vm.profile.githubUsername">
   </div>
   <div class="form-group">
     <label for="linkedInUrl">LinkedIn</label>
-    <input name="linkedInUrl" type="url" class="form-control" placeholder="LinkedIn" data-ng-model="vm.profile.LinkedInProfile">
+    <input name="linkedInUrl" type="url" class="form-control" placeholder="LinkedIn"
+           data-ng-model="vm.profile.linkedInProfile">
   </div>
   <div class="form-group">
     <label for="bio">Short Bio</label>
-    <textarea id="bio" class="form-control" data-ng-model="vm.profile.Bio"></textarea>
+    <textarea id="bio" class="form-control" data-ng-model="vm.profile.bio"></textarea>
   </div>
   <div class="form-actions">
     <button class="btn btn-primary" type="submit" data-ng-click="vm.saveProfile()">Save</button>

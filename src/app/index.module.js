@@ -6,7 +6,8 @@ import { runBlock } from './index.run';
 //import { factoryBuilder } from './common/factory.builder'
 import { LoginController } from './auth/login.controller';
 import { RegisterController } from './auth/register.controller';
-import { SessionsController } from './sessions/sessions.controller';
+import { SessionsController } from './sessions/session-list.controller.js';
+import { SubmitSessionController } from './sessions/submit-session.controller';
 import { ProfileController } from './profile/profile.controller';
 import { SessionService } from './sessions/sessions.service';
 import { ProfileService } from './profile/profile.service';
@@ -15,6 +16,7 @@ import { AuthInterceptor } from './auth/auth.interceprtor';
 import { LoginDirective } from './components/login/login.directive';
 import { SignupDirective } from './components/signup/signup.directive';
 import { NavbarDirective } from './components/navbar/navbar.directive';
+import { SubmissionDirective } from './components/submission/submission.directive'
 import { ProfileEditorDirective } from './components/profile-editor/profile-editor.directive'
 
 angular.module('conferenceSite', // eslint-disable-line
@@ -27,15 +29,17 @@ angular.module('conferenceSite', // eslint-disable-line
   .config(routerConfig)
   .run(runBlock)
   .service('authInterceptorService', AuthInterceptor)
-  .service('SessionService', SessionService)
+  .service('sessionService', SessionService)
   .service('authService', AuthService)
   .service('profileService', ProfileService)
   .directive('login', LoginDirective)
   .directive('signup', SignupDirective)
   .directive('navbar', NavbarDirective)
   .directive('profileEditor', ProfileEditorDirective)
+  .directive('sessionSubmissionForm', SubmissionDirective)
   .controller('SessionsController', SessionsController)
   .controller('LoginController', LoginController)
   .controller('RegisterController', RegisterController)
-  .controller('ProfileController', ProfileController);
+  .controller('ProfileController', ProfileController)
+  .controller('SubmitSessionController', SubmitSessionController);
 

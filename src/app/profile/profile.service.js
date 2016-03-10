@@ -1,17 +1,16 @@
 'use strict';
 
 export class ProfileService {
-  constructor($http, $q, $log, authService, $odataresource, baseUrl) {
+  constructor($q, $log, authService, $odataresource, baseUrl) {
     //noinspection BadExpressionStatementJS
     'ngInject';
 
-    this.$http = $http;
     this.$q = $q;
     this.$log = $log;
     this.authService = authService;
     this.$odataresource = $odataresource;
     this.userResource = $odataresource(baseUrl + '/odata/Users');
-    this.profileResource = $odataresource(baseUrl + 'odata/Profiles', 'Id');
+    this.profileResource = $odataresource(baseUrl + 'odata/Profiles', 'id');
   }
 
   getProfile() {
@@ -19,15 +18,15 @@ export class ProfileService {
     let authData = this.authService.getCurrentToken();
     this.userResource
         .odata()
-        .filter("UserName", authData.username)
-        .expand('Profile')
-        .select(['Profile'])
+      .filter("userName", authData.username)
+      .expand('profile')
+      .select(['profile'])
         .single(response => {
           // honestly not when this gets called, need to check
           deferred.reject(response);
         }, response => {
-          if(response.Profile)
-            deferred.resolve(response.Profile);
+          if (response.profile)
+            deferred.resolve(response.profile);
           else
             deferred.reject("Not found");
         });
@@ -37,23 +36,22 @@ export class ProfileService {
 
   saveProfile(profile) {
     let deferred = this.$q.defer();
+    let newProfile = new this.profileResource(profile);
 
-    if(profile.Id !== undefined && profile.Id > 0) {
+    if (profile.id !== undefined && profile.id > 0) {
       this.$log.log("Updating");
-      let newProfile = new this.profileResource(profile);
+
       newProfile.$update(savedProfile => {
         deferred.resolve(savedProfile);
       }, err => {
-        deferred.reject(this.formatErrorMessage(err));
+        deferred.reject(ProfileService.formatErrorMessage(err));
       });
 
     } else {
-      this.$log.log("creating");
-      let newProfile = new this.profileResource(profile);
       newProfile.$save(savedProfile => {
         deferred.resolve(savedProfile);
       }, err => {
-        deferred.reject(this.formatErrorMessage(err));
+        deferred.reject(ProfileService.formatErrorMessage(err));
       });
     }
 

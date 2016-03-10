@@ -4,7 +4,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'app/sessions/sessions.html',
+      templateUrl: 'app/sessions/session-list.html',
       controller: 'SessionsController',
       controllerAs: 'vm'
     })
@@ -24,6 +24,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       url: '/profile',
       templateUrl: 'app/profile/edit.html',
       controller: 'ProfileController',
+      controllerAs: 'vm'
+    })
+    .state('submit-talk', {
+      url: '/submit-talk',
+      templateUrl: 'app/sessions/submit-session.html',
+      controller: 'SubmitSessionController',
       controllerAs: 'vm'
     });
 
