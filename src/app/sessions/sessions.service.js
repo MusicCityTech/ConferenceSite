@@ -10,6 +10,7 @@ export class SessionService {
     this.$odataresource = $odataresource;
     this.baseUrl = baseUrl;
     this.sessionResource = $odataresource(baseUrl + 'odata/Sessions', 'id');
+    this.userResource = $odataresource(baseUrl + 'odata/Users', 'id');
   }
 
   getSessions() {
@@ -37,7 +38,7 @@ export class SessionService {
       title: session.title
     });
 
-    if (session.Id !== undefined && sessionId > 0) {
+    if (angular.isDefined(session.Id) && session.Id > 0) {
       newSession.$update(savedSession => {
         deferred.resolve(savedSession);
       }, err => {
@@ -50,6 +51,26 @@ export class SessionService {
         deferred.reject(SessionService.formatErrorMessage(err));
       })
     }
+
+    return deferred.promise;
+  }
+
+  getProposedTalks() {
+    let deferred = this.$q.defer();
+    let authData = this.authService.getCurrentToken();
+    this.userResource
+      .odata()
+      .filter('userName', authData.username)
+      .expand("sessions")
+      .expand("profile")
+      .single(() => {
+      }, response => {
+        this.$log.log("success", response);
+        deferred.resolve(response);
+      }, err => {
+        this.$log.log("error", err);
+        deferred.reject(err);
+      });
 
     return deferred.promise;
   }

@@ -91,7 +91,7 @@ export class AuthService {
   getUserInfo() {
     let deferred = this.$q.defer();
     let userInfo = this.localStorage.get('userInfo');
-    if(userInfo === undefined) {
+    if(angular.isUndefined(userInfo)) {
       this.$http.get(this.baseUrl + 'api/Account/UserInfo')
         .then(response => {
           this.localStorage.set('userInfo', response);

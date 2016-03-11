@@ -1,0 +1,15 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Speaker</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="proposedTalk in vm.proposedTalks">
+    <td>{{proposedTalk.title}}</td>
+    <td>{{vm.profile.firstName}} {{vm.profile.lastName}}</td>
+  </tr>
+  </tbody>
+
+</table>

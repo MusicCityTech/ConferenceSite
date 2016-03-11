@@ -38,7 +38,7 @@ export class ProfileService {
     let deferred = this.$q.defer();
     let newProfile = new this.profileResource(profile);
 
-    if (profile.id !== undefined && profile.id > 0) {
+    if (angular.isDefined(profile.id) && profile.id > 0) {
       this.$log.log("Updating");
 
       newProfile.$update(savedProfile => {

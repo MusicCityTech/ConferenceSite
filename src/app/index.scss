@@ -27,6 +27,55 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
+.navbar-static-top {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar-collapse {
+    height: auto;
+    border-top: 0;
+    box-shadow: none;
+    max-height: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .navbar-collapse.collapse {
+    display: block !important;
+    width: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+
+  .navbar-collapse.in {
+    overflow-x: visible !important;
+  }
+}
+
+.navbar-vertical {
+  min-width: 200px;
+  margin-right: 0;
+  margin-left: 0;
+  float: left;
+}
+
+.navbar-vertical > .navbar-nav,
+.navbar-vertical > .navbar-collapse > .navbar-nav > li,
+.navbar-vertical > .navbar-left,
+.navbar-vertical > .navbar-right,
+.navbar-vertical > .navbar-header {
+  float: none !important;
+}
+
+.navbar-vertical > .navbar-collapse > .navbar-nav,
+.navbar-vertical > .navbar-collapse > .navbar-nav > li,
+.navbar-vertical > .navbar-collapse > .navbar-nav > li a {
+  width: 100%;
+}
+
+
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

@@ -1,17 +1,16 @@
-<div class="container">
-  <table class="table table-bordered">
-    <thead>
-    <tr>
-      <td>Subject</td>
-      <td>Author</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="session in vm.sessions">
-      <th>{{session.title}}</th>
-      <th>{{session.speaker.profile.firstName}} {{session.speaker.profile.lastName}}</th>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <td>Subject</td>
+    <td>Author</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="session in vm.sessions">
+    <th>{{session.title}}</th>
+    <th>{{session.speaker.profile.firstName}} {{session.speaker.profile.lastName}}</th>
+  </tr>
+  </tbody>
+</table>
+
 

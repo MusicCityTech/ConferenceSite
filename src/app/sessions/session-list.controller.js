@@ -10,8 +10,4 @@ export class SessionsController {
         this.sessions = response;
       });
   }
-
-  onSave(submission) {
-
-  }
 }

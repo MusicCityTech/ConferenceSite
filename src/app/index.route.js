@@ -20,10 +20,24 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'RegisterController',
       controllerAs: 'vm'
     })
+    .state('my-mcc', {
+      url: '/my-mcc/',
+      templateUrl: 'app/my-mcc/my-mcc.html',
+      controller: 'MyMccController',
+      controllerAs: 'vm'
+    })
     .state('profile', {
-      url: '/profile',
-      templateUrl: 'app/profile/edit.html',
+      parent: 'my-mcc',
+      url: '/my-mcc/profile',
+      templateUrl: 'app/my-mcc/profile.html',
       controller: 'ProfileController',
+      controllerAs: 'vm'
+    })
+    .state('my-talks', {
+      parent: 'my-mcc',
+      url: '/my-mcc/my-talks',
+      templateUrl: 'app/my-mcc/my-talks.html',
+      controller: 'MyTalksController',
       controllerAs: 'vm'
     })
     .state('submit-talk', {
