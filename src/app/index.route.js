@@ -21,21 +21,22 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controllerAs: 'vm'
     })
     .state('my-mcc', {
-      url: '/my-mcc/',
+      abstract: true,
+      url: '/my-mcc',
       templateUrl: 'app/my-mcc/my-mcc.html',
       controller: 'MyMccController',
       controllerAs: 'vm'
     })
-    .state('profile', {
+    .state('my-mcc.profile', {
       parent: 'my-mcc',
-      url: '/my-mcc/profile',
+      url: '/',
       templateUrl: 'app/my-mcc/profile.html',
       controller: 'ProfileController',
       controllerAs: 'vm'
     })
-    .state('my-talks', {
+    .state('my-mcc.my-talks', {
       parent: 'my-mcc',
-      url: '/my-mcc/my-talks',
+      url: '/my-talks',
       templateUrl: 'app/my-mcc/my-talks.html',
       controller: 'MyTalksController',
       controllerAs: 'vm'
