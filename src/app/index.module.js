@@ -7,7 +7,7 @@ import { runBlock } from './index.run';
 import { LoginController } from './auth/login.controller';
 import { RegisterController } from './auth/register.controller';
 import { SessionsController } from './sessions/session-list.controller.js';
-import { SubmitSessionController } from './sessions/submit-session.controller';
+import { SubmitSessionController } from './my-mcc/submit-session.controller.js';
 import { ProfileController } from './my-mcc/profile.controller';
 import { MyMccController } from './my-mcc/my-mcc.controller';
 import { MyTalksController } from './my-mcc/my-talks.controller';

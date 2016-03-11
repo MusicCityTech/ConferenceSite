@@ -22,7 +22,7 @@ export class SubmitSessionController {
       .saveSession(this.proposedTalk)
       .then(savedSession => {
         this.toastr.success(`${savedSession.title} submitted successfully`);
-        this.$state.go('home');
+        this.$state.go('my-mcc.my-talks');
       }, err => {
         this.toastr.error(err);
       });

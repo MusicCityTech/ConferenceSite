@@ -41,9 +41,10 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'MyTalksController',
       controllerAs: 'vm'
     })
-    .state('submit-talk', {
+    .state('my-mcc.submit-talk', {
+      parent: 'my-mcc',
       url: '/submit-talk',
-      templateUrl: 'app/sessions/submit-session.html',
+      templateUrl: 'app/my-mcc/submit-session.html',
       controller: 'SubmitSessionController',
       controllerAs: 'vm'
     });
