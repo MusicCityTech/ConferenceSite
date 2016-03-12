@@ -2,14 +2,14 @@
   "name": "conferenceSite",
   "version": "0.0.0",
   "dependencies": {
-    "angular-animate": "~1.4.2",
-    "angular-cookies": "~1.4.2",
-    "angular-touch": "~1.4.2",
-    "angular-sanitize": "~1.4.2",
-    "angular-messages": "~1.4.2",
-    "angular-aria": "~1.4.2",
+    "angular-animate": "~1.5.0",
+    "angular-cookies": "~1.5.0",
+    "angular-touch": "~1.5.0",
+    "angular-sanitize": "~1.5.0",
+    "angular-messages": "~1.5.0",
+    "angular-aria": "~1.5.0",
     "jquery": "~2.1.4",
-    "angular-resource": "~1.4.2",
+    "angular-resource": "~1.5.0",
     "angular-ui-router": "~0.2.15",
     "bootstrap-sass": "~3.3.5",
     "angular-bootstrap": "~0.13.4",
@@ -17,12 +17,12 @@
     "angular-toastr": "^1.7.0",
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
-    "angular": "~1.4.2",
+    "angular": "~1.5.0",
     "angular-odata-resources": "^1.0.14",
     "angular-local-storage": "^0.2.3"
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.2"
+    "angular-mocks": "~1.5.0"
   },
   "overrides": {
     "bootstrap-sass": {
@@ -34,17 +34,10 @@
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
         "assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
       ]
-    },
-    "breeze-client": {
-      "main": [
-        "breeze.debug.js",
-        "build/adapters/breeze.bridge.angular.js",
-        "build/adapters/breeze.dataService.odata.js"
-      ]
     }
   },
   "resolutions": {
     "jquery": "~2.1.4",
-    "angular": "~1.4.2"
+    "angular": "~1.5.0"
   }
 }
