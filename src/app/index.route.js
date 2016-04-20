@@ -4,8 +4,8 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'app/sessions/session-list.html',
-      controller: 'SessionsController',
+      templateUrl: 'app/home/home.html',
+      controller: 'HomeController',
       controllerAs: 'vm'
     })
     .state('login', {

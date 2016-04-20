@@ -11,6 +11,7 @@ import { SubmitSessionController } from './my-mcc/submit-session.controller.js';
 import { ProfileController } from './my-mcc/profile.controller';
 import { MyMccController } from './my-mcc/my-mcc.controller';
 import { MyTalksController } from './my-mcc/my-talks.controller';
+import { HomeController } from './home/home.controller';
 import { SessionService } from './sessions/sessions.service';
 import { ProfileService } from './profile/profile.service';
 import { AuthService } from './auth/auth.service';
@@ -45,5 +46,6 @@ angular.module('conferenceSite', // eslint-disable-line
   .controller('ProfileController', ProfileController)
   .controller('SubmitSessionController', SubmitSessionController)
   .controller('MyMccController', MyMccController)
-  .controller('MyTalksController', MyTalksController);
+  .controller('MyTalksController', MyTalksController)
+  .controller('HomeController', HomeController);
 
