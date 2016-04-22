@@ -27,6 +27,14 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
+nav.navbar-default {
+  background-color: #c72c05;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: #fa582f;
+}
+
 .navbar-static-top {
   margin-bottom: 0;
 }
@@ -51,6 +59,10 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   .navbar-collapse.in {
     overflow-x: visible !important;
   }
+
+  ul.navbar-right {
+    margin-right: 0px;
+  }
 }
 
 .navbar-vertical {
@@ -72,6 +84,10 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 .navbar-vertical > .navbar-collapse > .navbar-nav > li,
 .navbar-vertical > .navbar-collapse > .navbar-nav > li a {
   width: 100%;
+}
+
+.content {
+  padding: 0 20px;
 }
 
 
