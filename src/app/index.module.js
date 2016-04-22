@@ -29,7 +29,7 @@ angular.module('conferenceSite', // eslint-disable-line
     'ngResource', 'ui.router', 'ui.bootstrap', 'toastr', 'ODataResources', 'LocalStorageModule'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
-  .constant('baseUrl', 'http://localhost:50391/')
+  .constant('baseUrl', 'http://mcc-api.azurewebsites.net/')
   .config(config)
   .config(routerConfig)
   .run(runBlock)
