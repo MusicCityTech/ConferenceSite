@@ -12,6 +12,10 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 // bower:scss
 // endbower
 
+body {
+  font-size: 14px;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -28,16 +32,141 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 }
 
 nav.navbar-default {
-  background-color: #c72c05;
+  background-color: rgba(255,255,255,0.2);
 }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  background-color: #fa582f;
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:active,
+.navbar-default .navbar-nav > li > a:link,
+.navbar-default .navbar-nav > li > a:visited {
+  color: #fff;
+  transition: all 1s;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #fff;
+  background-color: #2a3455;
 }
 
 .navbar-static-top {
   margin-bottom: 0;
 }
+
+
+.navbar-vertical {
+  min-width: 200px;
+  margin-right: 0;
+  margin-left: 0;
+  float: left;
+}
+
+.navbar-vertical > .navbar-nav,
+.navbar-vertical > .navbar-collapse > .navbar-nav > li,
+.navbar-vertical > .navbar-left,
+.navbar-vertical > .navbar-right,
+.navbar-vertical > .navbar-header {
+  float: none !important;
+}
+
+.navbar-vertical > .navbar-collapse > .navbar-nav,
+.navbar-vertical > .navbar-collapse > .navbar-nav > li,
+.navbar-vertical > .navbar-collapse > .navbar-nav > li a {
+  width: 100%;
+}
+
+.content {
+  position: relative;
+  top: -55px;
+}
+
+.homeContent {
+  padding: 100px 40px 60px;
+  background: url("http://blog.ihg.com/wp-content/uploads/2014/11/skylineDark.jpg") no-repeat fixed;
+  background-size: cover;
+  text-align: right;
+}
+
+.homeHero {
+  color: #fff;
+}
+
+.homeHero img {
+  width: 450px;
+}
+
+.homeHero p {
+  width: 50%;
+  margin: 20px 0 20px 50%;
+  font-size: 1.3em;
+}
+
+.homeOverview {
+  padding: 20px 0 20px;
+  margin-bottom: 30px;
+}
+
+.homeOverview h2 {
+  color: #9e5d8e;
+  margin-top: 0;
+}
+
+.homeOverview img {
+  float: right;
+  margin-left: 15px;
+}
+
+.homeOverview p {
+  font-size: 1.3em;
+}
+
+.homeSponsors h2 {
+  color: #9e5d8e;
+  margin-top: 0;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+.homeSponsors img {
+  width: 100%;
+}
+
+.scheduleContent {
+  padding: 100px 40px 60px;
+  height: 600px;
+  background: url("https://cmga360music.files.wordpress.com/2016/01/12646924_586942884786480_5614413277541589636_o.jpg") 30% no-repeat fixed;
+  background-size: cover;
+  text-align: right;
+  color: #fff;
+}
+
+.seminar {
+  border-radius: 10px;
+  border: 1px solid #72B0E8;
+  background-color: #C5DDF3;
+  padding: 15px 30px;
+  margin-bottom: 20px;
+}
+
+.seminar img {
+  border-radius: 50%;
+  width: 150px;
+  float: right;
+  margin-left: 15px;
+}
+
+.seminar h2,
+.seminar h3 {
+  margin-top: 10px;
+}
+
+
+/******************************
+MEDIA QUERIES
+******************************/
 
 @media (min-width: 768px) {
   .navbar-collapse {
@@ -65,29 +194,35 @@ nav.navbar-default {
   }
 }
 
-.navbar-vertical {
-  min-width: 200px;
-  margin-right: 0;
-  margin-left: 0;
-  float: left;
-}
 
-.navbar-vertical > .navbar-nav,
-.navbar-vertical > .navbar-collapse > .navbar-nav > li,
-.navbar-vertical > .navbar-left,
-.navbar-vertical > .navbar-right,
-.navbar-vertical > .navbar-header {
-  float: none !important;
-}
+@media (min-width: 920px) {
+  .homeContent {
+    background-position: right 30%;
+    background-size: 130%;
+  }
 
-.navbar-vertical > .navbar-collapse > .navbar-nav,
-.navbar-vertical > .navbar-collapse > .navbar-nav > li,
-.navbar-vertical > .navbar-collapse > .navbar-nav > li a {
-  width: 100%;
-}
+  .container-fluid {
+    width: 920px;
+  }
 
-.content {
-  padding: 0 20px;
+  .homeHero,
+  .scheduleHero {
+    width: 920px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+
+  .homeOverview,
+  .scheduleOverview {
+    width: 920px;
+    margin: 0 auto;
+    padding: 50px 15px;
+  }
+
+  .homeSponsors {
+    width: 920px;
+    margin: 0 auto;
+  }
 }
 
 

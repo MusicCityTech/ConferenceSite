@@ -26,6 +26,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'AboutController',
       controllerAs: 'vm'
     })
+    .state('schedule', {
+      url: '/schedule',
+      templateUrl: 'app/schedule/schedule.html',
+      controller: 'ScheduleController',
+      controllerAs: 'vm'
+    })
     .state('contact', {
       url: '/contact',
       templateUrl: 'app/contact/contact.html',

@@ -46,6 +46,7 @@ angular.module('conferenceSite', // eslint-disable-line
   .controller('LoginController', LoginController)
   .controller('RegisterController', RegisterController)
   .controller('ProfileController', ProfileController)
+  .controller('ScheduleController', ScheduleController)
   .controller('SubmitSessionController', SubmitSessionController)
   .controller('MyMccController', MyMccController)
   .controller('MyTalksController', MyTalksController)
