@@ -12,6 +12,8 @@ import { ProfileController } from './my-mcc/profile.controller';
 import { MyMccController } from './my-mcc/my-mcc.controller';
 import { MyTalksController } from './my-mcc/my-talks.controller';
 import { HomeController } from './home/home.controller';
+import { AboutController } from './about/about.controller';
+import { ContactController } from './contact/contact.controller';
 import { SessionService } from './sessions/sessions.service';
 import { ProfileService } from './profile/profile.service';
 import { AuthService } from './auth/auth.service';
@@ -27,7 +29,7 @@ angular.module('conferenceSite', // eslint-disable-line
     'ngResource', 'ui.router', 'ui.bootstrap', 'toastr', 'ODataResources', 'LocalStorageModule'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
-  .constant('baseUrl', 'http://localhost:50391/')
+  .constant('baseUrl', 'http://mcc-api.azurewebsites.net/')
   .config(config)
   .config(routerConfig)
   .run(runBlock)
@@ -44,8 +46,11 @@ angular.module('conferenceSite', // eslint-disable-line
   .controller('LoginController', LoginController)
   .controller('RegisterController', RegisterController)
   .controller('ProfileController', ProfileController)
+  .controller('ScheduleController', ScheduleController)
   .controller('SubmitSessionController', SubmitSessionController)
   .controller('MyMccController', MyMccController)
   .controller('MyTalksController', MyTalksController)
-  .controller('HomeController', HomeController);
+  .controller('HomeController', HomeController)
+  .controller('AboutController', AboutController)
+  .controller('ContactController', ContactController);
 

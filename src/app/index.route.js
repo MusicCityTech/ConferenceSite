@@ -20,6 +20,24 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'RegisterController',
       controllerAs: 'vm'
     })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'app/about/about.html',
+      controller: 'AboutController',
+      controllerAs: 'vm'
+    })
+    .state('schedule', {
+      url: '/schedule',
+      templateUrl: 'app/schedule/schedule.html',
+      controller: 'ScheduleController',
+      controllerAs: 'vm'
+    })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: 'app/contact/contact.html',
+      controller: 'ContactController',
+      controllerAs: 'vm'
+    })
     .state('my-mcc', {
       abstract: true,
       url: '/my-mcc',
